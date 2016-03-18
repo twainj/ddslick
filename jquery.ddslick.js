@@ -71,7 +71,7 @@
         return this.each(function () {
             //Preserve the original defaults by passing an empty object as the target
             //The object is used to save drop-down's corresponding settings and data.
-            var options = $.extend({}, defaults, userOptions);
+            var options = $.extend({}, defaults, this.dataset, userOptions);
 
             var obj = $(this),
                 data = obj.data('ddslick');
@@ -86,7 +86,7 @@
                     ddSelect.push({
                         text: $.trim($this.text()),
                         value: $this.val(),
-                        selected: $this.is(':selected'),
+                        selected: $this.attr('selected') != null,
                         description: thisData.description,
                         imageSrc: thisData.imagesrc //keep it lowercase for HTML5 data-attributes
                     });
